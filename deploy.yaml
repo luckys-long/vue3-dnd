@@ -1,0 +1,72 @@
+apiVersion: v1
+data:
+  Configfile: |
+    configVersion: v2
+    service:
+      id: b7127faa-544f-427b-9a8e-c7710ac3er42
+      name: topo-front-end
+      enableShortServiceName: true
+      port: 80
+      paths:
+        - name: /
+kind: ConfigMap
+metadata:
+  name: topo-front-end
+  namespace: system
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topo-front-end
+  namespace: system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: topo-front-end
+  template:
+    metadata:
+      name: topo-front-end
+      namespace: system
+      labels:
+        app: topo-front-end
+    spec:
+      containers:
+        - name: topo-front-end-container
+          image: 'harbor.internal.wise-paas.cn/microservice/topo-front-end:latest'
+          imagePullPolicy: Always
+        - name: register
+          image: 'harbor.internal.wise-paas.cn/microservice/register-client:v3.1.2'
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - /bin/sh
+                  - '-c'
+                  - sh /usr/local/bin/stop.sh
+          resources:
+            limits:
+              cpu: 120m
+              ephemeral-storage: 150Mi
+              memory: 150Mi
+            requests:
+              cpu: 5m
+              ephemeral-storage: 10Mi
+              memory: 20Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /tmp/service.yaml
+              name: topo-front-end
+              subPath: service.yaml
+      volumes:
+        - name: topo-front-end
+          configMap:
+            name: topo-front-end
+            defaultMode: 420
+            items:
+              - key: Configfile
+                path: service.yaml

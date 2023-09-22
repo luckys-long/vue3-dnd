@@ -1,0 +1,66 @@
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexStart {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin flexBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// flex column
+@mixin flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+// flex align center
+@mixin flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+// borderBox with padding
+@mixin borderBox($top, $right: $top, $bottom: $top, $left: $right){
+  box-sizing: border-box;
+  padding: $top $right $bottom $left;
+}
+
+@mixin transition{
+  transition: all .25s linear;
+}
+
+/*单行文本溢出*/
+@mixin single-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*多行文本溢出*/
+@mixin multi-line($a) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $a;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+// borderBox with padding
+@mixin borderBox($top, $right: $top, $bottom: $top, $left: $right){
+  box-sizing: border-box;
+  padding: $top $right $bottom $left;
+}
+
+@mixin overflowY {
+  overflow-y: auto;
+  //overflow-y: overlay;
+}

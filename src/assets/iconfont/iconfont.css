@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4229304 */
+  src: url('iconfont.woff2?t=1693292196308') format('woff2'),
+       url('iconfont.woff?t=1693292196308') format('woff'),
+       url('iconfont.ttf?t=1693292196308') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lvzhou_tuoputu:before {
+  content: "\e624";
+}
+
+.icon-tuoputu_bijibendiannao:before {
+  content: "\e636";
+}
+
+.icon-tuoputu_fuwuqi:before {
+  content: "\e637";
+}
+
+.icon-tuoputu_jizhan:before {
+  content: "\e638";
+}
+
+.icon-tuoputu_jiaohuanjizu:before {
+  content: "\e639";
+}
+
+.icon-tuoputu_shujufuwuqi:before {
+  content: "\e63a";
+}
+
+.icon-tuoputu_luyouqi:before {
+  content: "\e63b";
+}
+
+.icon-luyouqi:before {
+  content: "\e609";
+}
+
+.icon-tuoputu_pingbanPAD:before {
+  content: "\e644";
+}
+
+.icon-artificial-neural-network:before {
+  content: "\e93f";
+}
+
